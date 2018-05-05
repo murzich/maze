@@ -1,0 +1,8 @@
+.maze {
+    display: grid;
+    grid: repeat(10, 50px) / repeat(10, 50px);
+}
+.maze__cell {
+    box-sizing: border-box;
+    border: thin dashed black;
+}
