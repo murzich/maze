@@ -1,8 +1,16 @@
+body {
+    background-color: darkslategray;
+    font-family: sans-serif;
+    color: lightgray;
+}
 .maze {
     display: grid;
     grid: repeat(10, 50px) / repeat(10, 50px);
 }
 .maze__cell {
     box-sizing: border-box;
-    border: thin dashed black;
+    border: thin dashed lightgray;
+}
+[data-value = wall] {
+    background-color: black;
 }
