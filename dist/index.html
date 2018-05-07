@@ -11,6 +11,10 @@
 <body>
     <main>
         <h1>Maze solver</h1>
+        <section class="control" id="control">
+            <button type="button" class="control__button" id="reset">Reset</button>
+            <button type="button" class="control__button" id="run">Run</button>
+        </section>
         <section id="maze" class="maze">
             <div class="maze__cell" data-index="0"></div>
             <div class="maze__cell" data-index="1"></div>
@@ -113,8 +117,9 @@
             <div class="maze__cell" data-index="98"></div>
             <div class="maze__cell" data-index="99"></div>
         </section>
+
     </main>
-    <footer>light-it, zp - 2018</footer>
+    <footer>Solution takes <span id="answer">##</span> turns</footer>
     <script src="bundle.js"></script>
 </body>
 </html>

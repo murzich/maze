@@ -5,7 +5,6 @@ module.exports = {
     output: {
         filename: 'bundle.js',
         path: path.resolve(__dirname, 'dist'),
-        // publicPath: "/"
     },
     devtool: 'inline-source-map',
     module: {
@@ -20,6 +19,7 @@ module.exports = {
         contentBase: './dist',
         index: './dist/index.html',
         port: 3000,
-        // open: true
+        disableHostCheck: true,
+        host: '0.0.0.0'
     }
 };

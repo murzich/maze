@@ -1,16 +1,31 @@
 body {
-    background-color: darkslategray;
     font-family: sans-serif;
-    color: lightgray;
 }
 .maze {
     display: grid;
-    grid: repeat(10, 50px) / repeat(10, 50px);
+    grid: repeat(10, 25px) / repeat(10, 25px);
 }
 .maze__cell {
     box-sizing: border-box;
     border: thin dashed lightgray;
 }
-[data-value = wall] {
+[data-value = W] {
     background-color: black;
+}
+[data-value = R] {
+    background-image: radial-gradient(circle at center, black 20%, transparent 20%);
+}
+[data-value = S] {
+    background-image: radial-gradient(circle at center, black 50%, transparent 50%);
+}
+[data-value = E] {
+    background-image: radial-gradient(circle at center, transparent 20%, black 20%, black 50%, transparent 50%);
+}
+
+.control {
+    padding: 10px;
+}
+.control__button {
+    width: 50px;
+    height: 20px;
 }

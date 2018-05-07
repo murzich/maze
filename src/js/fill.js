@@ -1,7 +1,6 @@
-import { startPoint, endPoint, startSymbol, endSymbol, wallSymbol } from "./const";
+import {startPoint, endPoint, startSymbol, endSymbol, wallSymbol, mazeGrid, routeSymbol} from "./const";
 
 export const fillZeros = (grid) => {
-    // fill undefined elements by zeros;
     for (let i = grid.space.length - 1; i >= 0; i--) {
         if (grid.space[i] !== wallSymbol
             && grid.space[i] !== startSymbol
@@ -36,11 +35,11 @@ export const fillWaves = (grid) => {
             }
         });
         if (targetValuesArray.indexOf(0) === -1 ) {
-            alert("This maze doesn't have solutions");
+            // alert("This maze doesn't have solutions");
             break;
         }
         if (targetValuesArray.indexOf(endSymbol) !== -1) {
-            alert("Shortest way reached!");
+            // alert("Shortest way reached!");
             break;
         }
 
@@ -62,10 +61,17 @@ export const getMazeRoute = (filledGrid) => {
 
         let value = filledGrid.getValue(vector);
 
+        if (!Number.isInteger(value) || value === 0) return false;
+
         prevStepValue = Math.min(prevStepValue, value);
         return prevStepValue === value;
     });
 
+    if (prevStep === undefined) {
+        alert('This maze doesn\'t have solutions');
+        route = [];
+        return;
+    }
     route.unshift(prevStep);
 
     while (prevStepValue > 1) {
@@ -74,14 +80,22 @@ export const getMazeRoute = (filledGrid) => {
 
             let value = filledGrid.getValue(vector);
 
-            if (!Number.isInteger(value)) return false;
+            if (!Number.isInteger(value) || value === 0) return false;
 
             prevStepValue = Math.min(prevStepValue, value);
             return prevStepValue === value;
         });
         route.unshift(prevStep);
     }
+    return route;
+};
 
-    console.log(route);
-
+export const insertRoute = (routeArray) => {
+    if (!routeArray) {
+        // alert('This maze doesn\'t have solutions');
+        return;
+    }
+    routeArray.forEach(vector => {
+        mazeGrid.setValue(vector, routeSymbol);
+    })
 };
