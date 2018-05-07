@@ -6,12 +6,14 @@ export default class Vector {
     plus(other) {
         return new Vector(this.x + other.x, this.y + other.y);
     };
-    cross() {
+    get cross() {
+        let x = this.x;
+        let y = this.y;
         return [
-            this.plus(new Vector(1,0)),
-            this.plus(new Vector(0,1)),
-            this.plus(new Vector(-1,0)),
-            this.plus(new Vector(0,-1))
+            new Vector(x + 1, y),
+            new Vector(x - 1, y),
+            new Vector(x, y + 1),
+            new Vector(x, y - 1)
         ]
     }
 }

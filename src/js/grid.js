@@ -32,4 +32,10 @@ export default class Grid {
         });
         return vectorsArray;
     }
+    // return [array of values] from input [array of vectors]
+    getValues(vectorsArray) {
+        return vectorsArray.map(vector => {
+            return this.getValue(vector);
+        })
+    }
 }

@@ -1,25 +1,11 @@
 import Vector from './js/vector.js';
 import Grid from './js/grid.js';
-import { fillWaves, fillZeros } from "./js/fill.js";
+import { fillWaves, fillZeros, getMazeRoute } from "./js/fill.js";
 import { startPoint, endPoint, endSymbol, startSymbol, wallSymbol} from './js/const.js';
 
 import './style.css';
 
-// empty cell = 0;
-// wall cell = W;
-// start cell = S;
-// end cell = E;
-
-// лічільник кроків
-// let stepsSolving = 0;
-
-// create maze field
-// const mazeGrid = new Grid();
-// mazeGrid.clearSpace();
-// mazeGrid.setValue(new Vector( 0, 0 ), 'S');
-// mazeGrid.setValue(new Vector( 9, 9 ), 'E');
-// const mazeCellDOMArray = document.querySelectorAll('[data-index]');
-
+//DOM interaction
 const clickHandler = e => {
     const target = e.target;
     if (target.className !== 'maze__cell') return;
@@ -44,6 +30,17 @@ let mazeGrid = new Grid;
 mazeGrid.setValue(startPoint, startSymbol);
 mazeGrid.setValue(endPoint, endSymbol);
 
+mazeGrid.setValue(new Vector(1,0), wallSymbol);
+mazeGrid.setValue(new Vector(1,1), wallSymbol);
+mazeGrid.setValue(new Vector(0,3), wallSymbol);
+mazeGrid.setValue(new Vector(1,3), wallSymbol);
+mazeGrid.setValue(new Vector(2,3), wallSymbol);
+mazeGrid.setValue(new Vector(3,3), wallSymbol);
+mazeGrid.setValue(new Vector(3,2), wallSymbol);
+mazeGrid.setValue(new Vector(4,4), wallSymbol);
+// mazeGrid.setValue(new Vector(0,2), wallSymbol);
+
 fillZeros(mazeGrid);
 fillWaves(mazeGrid);
+getMazeRoute(mazeGrid);
 console.log(mazeGrid.space);
